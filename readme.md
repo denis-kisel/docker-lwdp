@@ -25,6 +25,14 @@ APP_NAME=name
 ## Configure apache
 * Edit `docker/apache/httpd.conf` file
 
+## Setup host
+* Set local ip in `docker-compose.yaml` file: `web->ports`. By default 127.0.0.2
+* Edit `ServerName=my-site.loc` config in `docker/apache/httpd.conf` file
+* Insert to host
+```
+127.0.0.2 my-site.loc
+```
+
 ## Build and run
 ```bash
 docker-compose up
@@ -33,16 +41,19 @@ docker-compose up
 APP_NAME=name docker-compose up
 ```
 
-## Laravel helper
+## Composer helpers
 Insert script to composer.json. Replace APP_NAME to real value from .env
 ```json
 ...
 "scripts": {
   "a": [
-        "docker-compose exec APP_NAME php artisan "
+      "docker-compose exec APP_NAME php artisan "
   ],
   "c": [
       "docker-compose exec APP_NAME composer "
+  ],
+  "p": [
+    "docker-compose exec APP_NAME php "
   ]
 }
 ...
@@ -55,4 +66,7 @@ composer a
 
 # Composer under container
 composer c
+
+# PHP
+composer p
 ```
