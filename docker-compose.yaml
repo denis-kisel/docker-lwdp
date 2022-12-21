@@ -1,0 +1,31 @@
+version: "3.9"
+services:
+  web:
+    image: httpd:2.4
+    container_name: ${APP_NAME}-web
+    volumes:
+      - ./docker/apache/httpd.conf:/usr/local/apache2/conf/httpd.conf
+      - ./public:/app/public
+      - ./storage/app/public:/app/storage/app/public
+    ports:
+      - "127.0.0.2:80:80"
+    depends_on:
+      - app
+  app:
+    build: .
+    container_name: ${APP_NAME}-app
+    volumes:
+      - ./:/app
+    ports:
+      - "9088:9000"
+    depends_on:
+      - db
+  db:
+    image: mysql:5.7.35
+    container_name: ${APP_NAME}-mysql
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+    ports:
+      -   "33088:3306"
+

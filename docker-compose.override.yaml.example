@@ -1,0 +1,4 @@
+services:
+    db:
+        volumes:
+            -   ./docker/mysql/data:/var/lib/mysql
