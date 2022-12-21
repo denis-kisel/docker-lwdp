@@ -42,7 +42,7 @@ APP_NAME=name docker-compose up
 ```
 
 ## Composer helpers
-Insert script to composer.json. Replace APP_NAME to real value from .env
+Insert script to composer.json. Replace `APP_NAME` to real value from .env
 ```json
 ...
 "scripts": {
