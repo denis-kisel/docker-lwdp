@@ -52,6 +52,12 @@ APP_NAME=name docker-compose up
 docker exec -it ${APP_NAME}-app bash # Use real value of APP_NAME(see .env)
 ```
 
+## DB
+Mysql
+* Port: 33088(change in docker-compose.yaml if needed)
+* User: root
+* Pass: secret
+
 ## Helpers
 ```bash
 # artisan

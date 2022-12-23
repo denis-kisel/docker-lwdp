@@ -18,8 +18,6 @@ services:
       - ./:/app
       - ./docker/helper_bin/a:/usr/local/bin/a
       - ./docker/helper_bin/commit:/usr/local/bin/commit
-    ports:
-      - "9088:9000"
     depends_on:
       - db
     working_dir: /app
