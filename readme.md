@@ -33,6 +33,12 @@ APP_NAME=name
 127.0.0.2 my-site.loc
 ```
 
+## Sync users(Linux only)
+For open access to write logs
+```bash
+ sudo chown -R www-data:www-data storage/
+```
+
 ## Build and run
 ```bash
 docker-compose up
@@ -41,32 +47,16 @@ docker-compose up
 APP_NAME=name docker-compose up
 ```
 
-## Composer helpers
-Insert script to composer.json. Replace `APP_NAME` to real value from .env
-```json
-...
-"scripts": {
-  "a": [
-      "docker-compose exec APP_NAME php artisan "
-  ],
-  "c": [
-      "docker-compose exec APP_NAME composer "
-  ],
-  "p": [
-    "docker-compose exec APP_NAME php "
-  ]
-}
-...
+## Go into container
+```bash
+docker exec -it ${APP_NAME}-app bash # Use real value of APP_NAME(see .env)
 ```
 
-Then
+## Helpers
 ```bash
-# php artisan
-composer a
+# artisan
+a
 
-# Composer under container
-composer c
-
-# PHP
-composer p
+# git commit all
+commit
 ```

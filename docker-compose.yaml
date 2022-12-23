@@ -16,10 +16,14 @@ services:
     container_name: ${APP_NAME}-app
     volumes:
       - ./:/app
+      - ./docker/helper_bin/a:/usr/local/bin/a
+      - ./docker/helper_bin/commit:/usr/local/bin/commit
     ports:
       - "9088:9000"
     depends_on:
       - db
+    working_dir: /app
+
   db:
     image: mysql:5.7.35
     container_name: ${APP_NAME}-mysql
