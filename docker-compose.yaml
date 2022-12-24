@@ -18,6 +18,8 @@ services:
       - ./:/app
       - ./docker/helper_bin/a:/usr/local/bin/a
       - ./docker/helper_bin/commit:/usr/local/bin/commit
+      - ~/.gitconfig:/root/.gitconfig
+      - ~/.git-credentials:/root/.git-credentials
     depends_on:
       - db
     working_dir: /app
